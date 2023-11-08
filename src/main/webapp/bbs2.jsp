@@ -64,7 +64,7 @@
 				<a href="update.jsp?id=<%= bag.getId()%>">
 						<button class="btn btn-danger">수정하기</button>
 				</a>
-				<a href="delete.jsp?id=<%= bag.getId()%>">
+				<a href="delete2?id=<%= bag.getId()%>">
 						<button class="btn btn-danger">삭제하기</button>
 				</a>
 			<% }} %>
