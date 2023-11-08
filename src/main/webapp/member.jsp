@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/project.css">
+<link rel="stylesheet" type="text/css" href="resources/css/project.css">
 <!-- Latest compiled and minified CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -29,7 +29,7 @@
 			<!-- 로그인 -->
 			<% if (session.getAttribute("id") == null) { %>
 			<!--로그인이 되지 않았을 때 화면을 보이게 하면 됨.  -->
-			<form action="login.jsp">
+			<form action="login">
 				<table border="1" bordercolor='red' class="table table-striped">
 					<tr>
 						<td>아이디</td>

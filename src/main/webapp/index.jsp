@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-스크립트 실행
+스프링 설정 제대로 되었는지 확인!! 성공!!
 </body>
 </html>
