@@ -8,6 +8,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductDAO {
+	
+	public int insert(ProductDTO dto) {
+		int result = 0;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("1. 드라이버 설정 성공");
+
+			String url = "jdbc:mysql://localhost:3306/shop5?useUnicode=true&serverTimezone=Asia/Seoul";
+			String user = "root";
+			String password = "Lhv7sxo171!";
+			Connection con = DriverManager.getConnection(url, user, password); // Connection
+			System.out.println("2. db연결 성공");
+
+		String sql = "insert into product values (?,?,?,?,?,?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, dto.getId());
+		ps.setString(2, dto.getTitle());
+		ps.setString(3, dto.getContent());
+		ps.setInt(4, Integer.parseInt(dto.getPrice()));
+		ps.setString(5, dto.getCompany());
+		ps.setString(6, dto.getImg());
+		System.out.println("3.ok----------");
+
+		result = ps.executeUpdate(); //1
+		System.out.println("4.ok----------");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("에러가 발생함.");
+		}
+		return result; //1, 0
+	}
+	
+	
 	// 물건 리스트 전체 보기
 	public ArrayList<ProductDTO> list() throws Exception {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -74,10 +107,6 @@ public class ProductDAO {
 		ResultSet rs = ps.executeQuery();
 		ProductDTO dto2 = new ProductDTO();
 		if(rs.next()) { // true이면
-			// rs내의 한 행씩 아래로 내려가면서 그 행에 결과가 들어있는지 체크
-			// 내부적으로 한 행씩 가르키게 됨: 커서!
-			// 가방을 하나 만들어서
-			// 각 컬럼의 인덱스를 가지고 꺼내와서 가방에 넣는다.
 			dto2.setId(rs.getString(1));
 			dto2.setTitle(rs.getString(2));
 			dto2.setContent(rs.getString(3));
