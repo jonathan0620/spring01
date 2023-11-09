@@ -27,4 +27,12 @@ public class ProductController {
 			//redirect해서 jsp호출할 때는 파일명.jsp까지 써주어야 한다. 
 		}
 	}
+	
+	@RequestMapping("update3")
+	public void update3(ProductDTO dto, Model model) {
+		System.out.println(dto);
+		ProductDAO dao = new ProductDAO();
+		int result = dao.update(dto);
+		model.addAttribute("result", result);
+	}
 }
