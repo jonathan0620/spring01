@@ -41,9 +41,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td>name: </td>
+				<td>title: </td>
 				<td>
-					<input name="name" value="111">
+					<input name="title" value="111">
 				</td>
 			</tr>
 			<tr>

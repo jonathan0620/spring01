@@ -13,31 +13,36 @@ public class ProductDAO {
 		int result = 0;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("1. 드라이버 설정 성공");
+			// 특정한 위치에 있는 드라이버 파일을 램에 읽어들여 설정
+			System.out.println("1. 드라이버 설정 성공.@@@@");
 
+			// 2. db연결 mySQL: school, oracle: xe
 			String url = "jdbc:mysql://localhost:3306/shop5?useUnicode=true&serverTimezone=Asia/Seoul";
 			String user = "root";
 			String password = "Lhv7sxo171!";
 			Connection con = DriverManager.getConnection(url, user, password); // Connection
-			System.out.println("2. db연결 성공");
+			System.out.println("2. db연결 성공.@@@@@@");
 
-		String sql = "insert into product values (?,?,?,?,?,?)";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, dto.getId());
-		ps.setString(2, dto.getTitle());
-		ps.setString(3, dto.getContent());
-		ps.setInt(4, Integer.parseInt(dto.getPrice()));
-		ps.setString(5, dto.getCompany());
-		ps.setString(6, dto.getImg());
-		System.out.println("3.ok----------");
+			// 3.SQL문 결정/생성
+			String sql = "insert into product values (?,?,?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getTitle());
+			ps.setString(3, dto.getContent());
+			ps.setInt(4, Integer.parseInt(dto.getPrice()));
+			ps.setString(5, dto.getCompany());
+			ps.setString(6, dto.getImg());
+			// insert into product values ("100", 1000);
+			System.out.println("3.ok----------");
 
-		result = ps.executeUpdate(); //1
-		System.out.println("4.ok----------");
-		}catch(Exception e) {
+			// 4.DB로 SQL문 전송
+			result = ps.executeUpdate(); // 1
+			System.out.println("4.ok----------");
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("에러가 발생함.");
 		}
-		return result; //1, 0
+		return result; // 1, 0
 	}
 	
 	
