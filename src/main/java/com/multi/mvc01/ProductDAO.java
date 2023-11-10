@@ -7,7 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ProductDAO {
+
 	
 	public int update(ProductDTO dto) {
 		int result = 0;
@@ -39,6 +43,7 @@ public class ProductDAO {
 		}
 		return result; // 1, 0
 	}
+	
 	
 	public int insert(ProductDTO dto) {
 		int result = 0;
@@ -75,9 +80,7 @@ public class ProductDAO {
 		}
 		return result; // 1, 0
 	}
-	
-	
-	// 물건 리스트 전체 보기
+
 	public ArrayList<ProductDTO> list() throws Exception {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		// 특정한 위치에 있는 드라이버 파일을 램에 읽어들여 설정
@@ -89,7 +92,6 @@ public class ProductDAO {
 		String password = "Lhv7sxo171!";
 		Connection con = DriverManager.getConnection(url, user, password); // Connection
 		System.out.println("2. db연결 성공.@@@@@@");
-
 
 		// 3.SQL문 결정/생성
 		String sql = "select * from product";
@@ -142,7 +144,11 @@ public class ProductDAO {
 		// 4. sql문 mysql서버로 전송
 		ResultSet rs = ps.executeQuery();
 		ProductDTO dto2 = new ProductDTO();
-		if(rs.next()) { // true이면
+		if (rs.next()) { // true이면
+			// rs내의 한 행씩 아래로 내려가면서 그 행에 결과가 들어있는지 체크
+			// 내부적으로 한 행씩 가르키게 됨: 커서!
+			// 가방을 하나 만들어서
+			// 각 컬럼의 인덱스를 가지고 꺼내와서 가방에 넣는다.
 			dto2.setId(rs.getString(1));
 			dto2.setTitle(rs.getString(2));
 			dto2.setContent(rs.getString(3));
