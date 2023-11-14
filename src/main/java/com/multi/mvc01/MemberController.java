@@ -27,8 +27,7 @@ public class MemberController {
 	    if(result == 1){
 	    	resultText = "회원가입에 성공했습니다.";
 	    }else{
-	    	resultText = "회원가입에 실패했습니다.";
-	    }
+	    	resultText = "회원가입에 실패했습니다.";	    }
 	    System.out.println(resultText);
 	}	
 	

@@ -1,12 +1,11 @@
 package com.multi.mvc01;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller // 싱글톤 + 컨트롤러 등록
 public class BbsController {
@@ -15,9 +14,9 @@ public class BbsController {
 	BbsDAO dao;
 	
 	@RequestMapping("one")
-	public void one(BbsDTO2 dto, Model model) throws Exception {
+	public void one(BbsDTO dto, Model model) throws Exception {
 		System.out.println(dto);
-		BbsDTO2 bag = dao.one(dto);
+		BbsDTO bag = dao.one(dto);
 		//검색결과는 bag에 들어있음. ==> views/one.jsp에 결과를 출력 
 		//bag을 one.jsp까지 전달해주어야 한다. ==> Model
 		model.addAttribute("bag", bag); //Object(큰) <-- BbsDTO2
@@ -27,7 +26,7 @@ public class BbsController {
 	@RequestMapping("list")
 	public void list(Model model) throws Exception {
 		//dao를 이용해서 여러개를 받아서 가지고 와주세요.
-		ArrayList<BbsDTO2> list = dao.list();
+		List<BbsDTO> list = dao.list();
 		System.out.println(list.size());
 		//views/list.jsp까지 넘어가야 함.==>Model 
 		//model을 이용해서 검색결과인 list를 list.jsp까지 넘기자.!
@@ -36,7 +35,7 @@ public class BbsController {
 	
 	// 요청하나당 함수하나.
 	@RequestMapping("insert2")
-	public void insert2(BbsDTO2 bag, Model model) {
+	public void insert2(BbsDTO bag, Model model) {
 		System.out.println(bag);
 		// db처리 --> views/insert2.jsp결과를 출력해주세요.
 		int result = dao.insert(bag);
@@ -48,7 +47,7 @@ public class BbsController {
 	}
 
 	@RequestMapping("update2")
-	public String update2(BbsDTO2 bag) {
+	public String update2(BbsDTO bag) {
 		int result = dao.update(bag);
 		// views에 update2.jsp를 만드세요.
 		if (result == 1) {
@@ -59,7 +58,7 @@ public class BbsController {
 	}
 
 	@RequestMapping("delete2")
-	public void delete2(BbsDTO2 bag, Model model) {
+	public void delete2(BbsDTO bag, Model model) {
 		// bag에 넣고
 		// dao를 이용해서 db처리하고
 		int result = dao.delete(bag);

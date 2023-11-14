@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs">
+<!-- ORM, Mapper파일! -->
+	<insert id="create">
+		insert into bbs values (null,?,?,?)
+	</insert>
+	<update id="update">
+		update bbs set title = ?, content = ? where id = ?
+	</update>
+	<delete id="delete">
+		delete from bbs where id = ?
+	</delete>
+	<select id = "one">
+		select * from bbs order by id desc
+	</select>
+	<select id = "list">
+		select * from bbs where id = ?
+	</select>
+</mapper>

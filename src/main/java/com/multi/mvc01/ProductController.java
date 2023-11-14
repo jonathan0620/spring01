@@ -1,6 +1,6 @@
 package com.multi.mvc01;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ public class ProductController {
 	
 	@RequestMapping("list2")
 	public void list2(Model model) throws Exception {
-		ArrayList<ProductDTO> list = dao.list();
+		List<ProductDTO> list = dao.list();
 		System.out.println(list.size());
 		model.addAttribute("list", list); //Object <-- ArrayList
 	}

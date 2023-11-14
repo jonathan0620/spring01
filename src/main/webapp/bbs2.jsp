@@ -1,13 +1,13 @@
-<%@page import="com.multi.mvc01.BbsDTO2"%>
+<%@page import="com.multi.mvc01.BbsDTO"%>
 <%@page import="com.multi.mvc01.BbsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <jsp:useBean id="bag" class="com.multi.mvc01.BbsDTO2"></jsp:useBean>
+    <jsp:useBean id="bag" class="com.multi.mvc01.BbsDTO"></jsp:useBean>
     <jsp:setProperty property="id" name="bag"/>
     <%
     	BbsDAO dao = new BbsDAO();
-    	BbsDTO2 bag2 = dao.one(bag);
+    	BbsDTO bag2 = dao.one(bag);
     %>
 <!DOCTYPE html>
 <html>

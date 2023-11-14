@@ -15,13 +15,13 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
 
 	//스프링이 램에 있는 mybatis를 찾아서 주소를 변수에 넣어준다.
-	@Autowired
-	SqlSessionTemplate my;
+	@Autowired //dependency injection(DI, 의존성주입)
+	SqlSessionTemplate my; //100
 	
 	// 각각의 처리를 메서드(함수)로 만들어라.
 	// 가입처리
 	public int insert(MemberDTO dto) {
-		int result = my.insert("member.create", dto);
+		int result = my.insert("member.create",dto );
 		return result; // 1, 0
 	}
 
